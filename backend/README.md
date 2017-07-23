@@ -1,6 +1,6 @@
-# backend
+# Batch7BackEnd
 
-> 
+> Batch 7 Back End Tutorial with feathers
 
 ## About
 
@@ -14,7 +14,7 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
 
     ```
-    cd path/to/backend; npm install
+    cd path/to/Batch7BackEnd; npm install
     ```
 
 3. Start your app
