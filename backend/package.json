@@ -26,5 +26,9 @@
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "start": "node src/",
     "mocha": "mocha test/ --recursive"
+  },
+  "dependencies": {
+    "feathers-nedb": "^2.6.2",
+    "nedb": "^1.8.0"
   }
 }
