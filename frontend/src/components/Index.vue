@@ -1,28 +1,38 @@
 <template>
   <div>
-    <div v-for="_message in messages" :key="_message._id">
-      <!-- Message received from peer -->
-      <div class="message.user != user ? 'chat-other' : 'chat-you'">
-        <div class="chat-user">
-          {{ _message.user }}
+    <q-layout>
+      <!-- Header -->
+      <div slot="header" class="toolbar">
+        <q-toolbar-title :padding="1">
+          Chat
+        </q-toolbar-title>
+      </div>
+      <div id="message-container" class="layout-view">
+        <div class="list striped">
+          <div class="item" v-for="_message in messages" :key="_message._id">
+            <div class="item-content">
+              <div class="chat-user">
+                {{ _message.user }}
+              </div>
+              <div class="chat-message">
+                {{ _message.content }}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="chat-message">
-          <p>
-            {{ _message.content }}
-          </p>
-        </div>
-        <div class="chat-date">
-          A few moments ago
+        <div id="down"></div>
+      </div>
+      <!-- Footer -->
+      <div slot="footer" style="background: #fff">
+        <!-- Message Input  -->
+        <div>
+          <form @submit.prevent="sendMessage(message)">
+            <input class="full-width" type="text" v-model="message" placeholder="Type your message here">
+            <button type="submit" class="primary pull-right" ><i>send</i></button>
+          </form>
         </div>
       </div>
-    </div>
-    <!-- Message Input  -->
-    <div>
-      <form @submit.prevent="sendMessage(message)">
-        <input type="text" v-model="message" placeholder="Type your message here">
-        <button type="submit" class="primary" ><i>send</i></button>
-      </form>
-    </div>
+    </q-layout>
   </div>
 </template>
 <script>
@@ -43,12 +53,13 @@ export default{
   },
   methods: {
     sendMessage: function (message) {
-      let new_message = {
+      let newMessage = {
         user: this.user,
         content: message
       }
-      ChatService.create(new_message)
+      ChatService.create(newMessage)
       this.message = ''
+      document.getElementById('down').scrollIntoView()
     }
   }
 }
