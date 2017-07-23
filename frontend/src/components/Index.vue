@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div v-for="message in messages" :key="message._id">
+    <div v-for="_message in messages" :key="_message._id">
       <!-- Message received from peer -->
       <div class="message.user != user ? 'chat-other' : 'chat-you'">
         <div class="chat-user">
-          {{ message.user }}
+          {{ _message.user }}
         </div>
         <div class="chat-date">
           A few moments ago
         </div>
         <div class="chat-message">
           <p>
-            {{ message.content }}
+            {{ _message.content }}
           </p>
         </div>
       </div>
@@ -45,9 +45,9 @@ export default{
     }
   },
   methods: {
-    sendMessage: function(message){
+    sendMessage: function (message) {
       ChatService.create(message)
-      this.message.content = '';
+      this.message.content = ''
     }
   }
 }
