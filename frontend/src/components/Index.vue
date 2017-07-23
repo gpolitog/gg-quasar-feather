@@ -26,6 +26,9 @@
   </div>
 </template>
 <script>
+
+
+
 import feathersApp from 'FeathersService.js'
 let ChatService = feathersApp.services.chat
 export default{
