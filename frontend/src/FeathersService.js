@@ -13,6 +13,6 @@ let feathers = feathersClient()
 
 let wingsJS = wings(feathers)
 wingsJS.serve('collection') // a collection service
-wingsJS.serve('messages')
+wingsJS.serve('chat')
 
 export default wingsJS
