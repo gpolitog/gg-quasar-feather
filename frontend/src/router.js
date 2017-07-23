@@ -22,7 +22,7 @@ export default new VueRouter({
 
   routes: [
     { path: '/', component: load('Login') },
-    { path: '/chat', component: load('Chat') }, // Default
+    { path: '/chat', component: load('Index') }, // Default
     { path: '*', component: load('Error404') } // Not found
   ]
 })
