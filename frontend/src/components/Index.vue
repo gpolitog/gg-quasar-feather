@@ -6,20 +6,20 @@
         <div class="chat-user">
           {{ _message.user }}
         </div>
-        <div class="chat-date">
-          A few moments ago
-        </div>
         <div class="chat-message">
           <p>
             {{ _message.content }}
           </p>
+        </div>
+        <div class="chat-date">
+          A few moments ago
         </div>
       </div>
     </div>
     <!-- Message Input  -->
     <div>
       <form @submit.prevent="sendMessage(message)">
-        <input type="text" v-model="message.content" placeholder="Type your message here">
+        <input type="text" v-model="message" placeholder="Type your message here">
         <button type="submit" class="primary" ><i>send</i></button>
       </form>
     </div>
@@ -37,17 +37,18 @@ export default{
   data () {
     return {
       messages: [],
-      message: {
-        user: '',
-        content: ''
-      },
-      user: ''
+      message: '',
+      user: 'user'
     }
   },
   methods: {
     sendMessage: function (message) {
-      ChatService.create(message)
-      this.message.content = ''
+      let new_message = {
+        user: this.user,
+        content: message
+      }
+      ChatService.create(new_message)
+      this.message = ''
     }
   }
 }
